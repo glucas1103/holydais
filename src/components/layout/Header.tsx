@@ -11,15 +11,16 @@ const Header = () => {
     { label: 'Solution', href: '#solution' },
     { label: 'Fonctionnalités', href: '#features' },
     { label: 'Tarifs', href: '#pricing' },
-    { label: 'Entreprise', href: '#entreprise' },
+    { label: 'Vision', href: '#entreprise' },
   ];
 
   return (
     <header className="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 shadow-sm">
       <nav className="container mx-auto px-4 py-2">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-xl font-bold text-black">
-            Holydais
+          <Link href="/" className="flex items-center gap-2">
+            <img src="/logo.png" alt="Logo Holydais" className="h-10 w-auto" />
+            <span className="text-xl font-bold text-black">Holydais</span>
           </Link>
 
           {/* Desktop Navigation */}

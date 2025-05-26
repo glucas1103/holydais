@@ -32,7 +32,7 @@ export default function Footer() {
         {/* Section gauche : Contact */}
         <div className="text-center md:text-left">
           <div className="font-semibold text-gray-800 mb-1">Contact</div>
-          <a href="mailto:contact@holydais.com" className="text-blue-600 hover:underline">contact@holydais.com</a>
+          <a href="mailto:lucas@holydais.com" className="text-blue-600 hover:underline">lucas@holydais.com</a>
         </div>
         {/* Section centrale : Placeholder vide pour équilibre du layout */}
         <div className="" />

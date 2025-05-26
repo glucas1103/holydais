@@ -1,9 +1,10 @@
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
+import Head from 'next/head';
 
 export const metadata = {
-  title: "Holydais - Gestion de Dais Simplifiée",
-  description: "Solution tout-en-un pour gérer efficacement vos dais et optimiser vos processus.",
+  title: "Holydais - Le constructeur d'agents IA",
+  description: "Holydais est un outil de création d'agents IA pour vos équipes, sans code.",
 };
 
 export default function RootLayout({
@@ -12,10 +13,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr">
-      <body>{children}
-        <Footer />
-      </body>
-    </html>
+    <>
+      <Head>
+        <link rel="icon" href="/logo.png" type="image/png" />
+      </Head>
+      <html lang="fr">
+        <body>{children}
+          <Footer />
+        </body>
+      </html>
+    </>
   );
 }

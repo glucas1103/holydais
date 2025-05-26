@@ -10,11 +10,33 @@ export default function ContactPage() {
     company: '',
     message: '',
   });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>(
+    'idle'
+  );
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implémenter la logique d'envoi du formulaire
-    console.log('Form submitted:', formData);
+    setStatus('loading');
+    setErrorMsg('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', company: '', message: '' });
+      } else {
+        setStatus('error');
+        setErrorMsg(data.error || 'Erreur lors de l\'envoi du message.');
+      }
+    } catch (err: any) {
+      setStatus('error');
+      setErrorMsg('Erreur réseau ou serveur.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -111,9 +133,16 @@ export default function ContactPage() {
               <button
                 type="submit"
                 className="w-full bg-white text-black py-4 rounded-xl font-bold text-lg hover:bg-white/90 transition-all duration-300 transform hover:scale-[1.02]"
+                disabled={status === 'loading'}
               >
-                Envoyer
+                {status === 'loading' ? 'Envoi en cours...' : 'Envoyer'}
               </button>
+              {status === 'success' && (
+                <p className="text-green-300 text-center font-semibold mt-4">Message envoyé avec succès !</p>
+              )}
+              {status === 'error' && (
+                <p className="text-red-300 text-center font-semibold mt-4">{errorMsg}</p>
+              )}
             </form>
           </div>
         </div>
