@@ -27,6 +27,9 @@ const Entreprise = () => {
             <Button href="/contact" variant="primary">
               Rejoignez la révolution
             </Button>
+            <Button href="/blog" variant="secondary" className="mt-4">
+              Découvrir notre blog
+            </Button>
           </div>
 
           <div className="relative h-[500px] w-full">

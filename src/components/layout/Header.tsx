@@ -12,6 +12,7 @@ const Header = () => {
     { label: 'Fonctionnalités', href: '#features' },
     { label: 'Tarifs', href: '#pricing' },
     { label: 'Vision', href: '#entreprise' },
+    { label: 'Blog', href: '/blog' },
   ];
 
   return (
